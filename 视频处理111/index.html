@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频处理工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 上传区域 -->
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="videoInput" accept="video/*" hidden>
+            <img src="./icons/upload.svg" alt="上传" class="icon">
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="main-content" hidden>
+            <!-- 视频预览 -->
+            <div class="video-section">
+                <video id="videoPreview" controls></video>
+                
+                <!-- 操作按钮区域 -->
+                <div class="action-buttons">
+                    <button id="infoBtn" class="action-btn" title="视频信息">
+                        <img src="./icons/info.svg" alt="信息" class="icon">
+                    </button>
+                    <button id="extractBtn" class="action-btn" title="提取帧">
+                        <img src="./icons/extract.svg" alt="提取" class="icon">
+                    </button>
+                    <button id="downloadAllBtn" class="action-btn" hidden title="下载全部">
+                        <img src="./icons/download.svg" alt="下载" class="icon">
+                    </button>
+                    <button id="removeBtn" class="action-btn action-btn-danger" title="移除视频">
+                        <img src="./icons/delete.svg" alt="删除" class="icon">
+                    </button>
+                </div>
+
+                <!-- 视频信息面板 -->
+                <div class="video-info-panel" hidden>
+                    <div id="videoInfo" class="info-grid"></div>
+                </div>
+
+                <!-- 进度条 -->
+                <div class="progress-container" hidden>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="progress-text">0%</div>
+                </div>
+            </div>
+
+            <!-- 提取的图片展示区域 -->
+            <div class="extracted-images">
+                <h3>提取的图片</h3>
+                <div id="imageGrid" class="image-grid"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

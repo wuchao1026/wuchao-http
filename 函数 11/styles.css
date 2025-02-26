@@ -1,0 +1,379 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* 容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 标题样式 */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* 主要内容区域布局 */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* 输入区域样式 */
+.input-section {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 输入组件样式 */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100px;
+}
+
+/* 表格样式 */
+.coordinates-table {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f9fa;
+    position: relative;
+    white-space: nowrap;
+    padding-right: 55px !important;
+}
+
+th .circle-button {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+th .delete-button {
+    right: 2px;
+}
+
+/* 按钮样式 */
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-row {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    color: white;
+    margin: 0 auto;
+}
+
+#add-row:hover {
+    background-color: var(--secondary-hover);
+    transform: scale(1.1);
+}
+
+/* 图表区域样式 */
+.chart-section {
+    flex: 2;
+    min-width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 图表类型选择样式 */
+select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    .input-section,
+    .chart-section {
+        width: 100%;
+    }
+}
+
+/* 输入模式选择样式 */
+.input-mode {
+    margin-bottom: 15px;
+}
+
+.input-mode label {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.input-mode input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* X值输入框禁用状态样式 */
+.x-value[disabled] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* 表格控制按钮区域 */
+.table-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+/* 图表背景样式 */
+.chart-section canvas {
+    background-color: white;
+}
+
+/* X轴设置区域样式 */
+.x-axis-settings {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* 统一按钮颜色方案 */
+:root {
+    --primary-color: #3498db;    /* 主按钮蓝色 */
+    --primary-hover: #2980b9;    /* 主按钮悬停色 */
+    --secondary-color: #2ecc71;  /* 次要按钮绿色 */
+    --secondary-hover: #27ae60;  /* 次要按钮悬停色 */
+}
+
+/* 圆形按钮基础样式 */
+.circle-button {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    vertical-align: middle;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.circle-button:hover {
+    background-color: var(--secondary-hover);
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* 删除按钮样式 */
+.delete-button {
+    background-color: #e74c3c !important;
+    margin-left: 2px !important;
+}
+
+.delete-button:hover {
+    background-color: #c0392b !important;
+}
+
+/* 图表类型按钮组样式 */
+.chart-type-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.chart-type-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--primary-color);
+    background-color: white;
+    color: var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chart-type-btn:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.chart-type-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 输入模式按钮组样式 */
+.input-mode-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.input-mode-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--primary-color);
+    background-color: white;
+    color: var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-mode-btn:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.input-mode-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 主操作按钮区域 */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+/* 标题设置区域样式 */
+.title-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 坐标轴标签容器 */
+.axis-labels {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.chart-title-input {
+    width: 100%;
+}
+
+.axis-label-input input, .chart-title-input input {
+    width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+/* 保存图表按钮样式 */
+#save-chart {
+    width: 420px;
+}
+
+/* 生成图表按钮容器 */
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.axis-label-input input:focus, .chart-title-input input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* 主操作按钮样式 */
+.main-action-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 4px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+}
+
+.main-action-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+} 

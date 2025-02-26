@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五子棋</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-info">
+            <div class="left-controls">
+                <div id="currentPlayer">当前玩家：黑子</div>
+                <select id="skinSelect">
+                    <option value="classic">经典木纹</option>
+                    <option value="jade">青玉质地</option>
+                    <option value="simple">简约白色</option>
+                    <option value="retro">复古风格</option>
+                    <option value="marble">大理石纹</option>
+                    <option value="bamboo">翠竹青色</option>
+                    <option value="sakura">樱花粉色</option>
+                </select>
+            </div>
+            <div class="right-controls">
+                <button id="undoBtn"><i class="fas fa-undo"></i> 悔棋</button>
+                <button id="historyBtn"><i class="fas fa-history"></i> 历史</button>
+                <button id="restartBtn"><i class="fas fa-redo"></i> 重新开始</button>
+            </div>
+        </div>
+        <canvas id="gameBoard" width="1000" height="1000"></canvas>
+    </div>
+
+    <!-- 历史棋局弹窗 -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>历史棋局</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="history-grid" id="historyList"></div>
+        </div>
+    </div>
+
+    <!-- 获胜弹窗 -->
+    <div id="winModal" class="modal">
+        <div class="modal-content win-modal">
+            <div class="win-message">
+                <div class="win-icon"></div>
+                <h2 id="winText">黑子获胜！</h2>
+                <p class="win-subtitle">对局已自动保存</p>
+                <div class="win-buttons">
+                    <button id="newGameBtn"><i class="fas fa-play"></i> 开始新局</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 

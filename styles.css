@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 2rem;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card h2 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

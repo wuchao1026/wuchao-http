@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片处理工具</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>图片处理工具</h1>
+        
+        <div class="main-content">
+            <div class="image-box">
+                <canvas id="canvas"></canvas>
+                <div class="upload-overlay" id="uploadOverlay">
+                    <input type="file" id="imageInput" accept="image/*" multiple>
+                    <label for="imageInput" class="upload-btn">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>点击上传图片</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tools-container">
+                <div class="tools-row top-tools">
+                    <button onclick="undo()" class="tool-btn">
+                        <i class="fas fa-undo"></i>
+                        <span>返回</span>
+                    </button>
+                    <button onclick="showImageInfo()" class="tool-btn">
+                        <i class="fas fa-info-circle"></i>
+                        <span>信息</span>
+                    </button>
+                    <button onclick="invertColors()" class="tool-btn">
+                        <i class="fas fa-adjust"></i>
+                        <span>反色</span>
+                    </button>
+                    <button onclick="rotateImage(90)" class="tool-btn">
+                        <i class="fas fa-redo"></i>
+                        <span>旋转</span>
+                    </button>
+                    <button onclick="flipHorizontal()" class="tool-btn">
+                        <i class="fas fa-arrows-alt-h"></i>
+                        <span>水平镜像</span>
+                    </button>
+                </div>
+                <div class="tools-row bottom-tools">
+                    <button onclick="flipVertical()" class="tool-btn">
+                        <i class="fas fa-arrows-alt-v"></i>
+                        <span>垂直镜像</span>
+                    </button>
+                    <button onclick="mergeTwoImages()" class="tool-btn">
+                        <i class="fas fa-object-group"></i>
+                        <span>拼接</span>
+                    </button>
+                    <button onclick="enableCrop()" class="tool-btn">
+                        <i class="fas fa-crop-alt"></i>
+                        <span>自由裁剪</span>
+                    </button>
+                    <button onclick="showPixelCropDialog()" class="tool-btn">
+                        <i class="fas fa-crop"></i>
+                        <span>定制裁剪</span>
+                    </button>
+                    <button onclick="downloadImage()" class="tool-btn download-btn">
+                        <i class="fas fa-download"></i>
+                        <span>下载</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="imageInfo" class="info-panel"></div>
+        </div>
+        
+        <!-- 添加定制裁剪对话框 -->
+        <div id="cropDialog" class="crop-dialog">
+            <div class="crop-dialog-content">
+                <h3>输入裁剪尺寸</h3>
+                <div class="crop-inputs">
+                    <div class="input-group">
+                        <label>起始 X:</label>
+                        <input type="number" id="cropX" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label>起始 Y:</label>
+                        <input type="number" id="cropY" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label>宽度:</label>
+                        <input type="number" id="cropWidth" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>高度:</label>
+                        <input type="number" id="cropHeight" min="1">
+                    </div>
+                </div>
+                <div class="crop-dialog-buttons">
+                    <button onclick="executePixelCrop()">确定</button>
+                    <button onclick="closeCropDialog()">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 添加拼接设置对话框 -->
+        <div id="mergeDialog" class="merge-dialog">
+            <div class="merge-dialog-content">
+                <h3>图片拼接设置</h3>
+                <div class="merge-inputs">
+                    <div class="input-group">
+                        <label>拼接方向:</label>
+                        <select id="mergeDirection">
+                            <option value="horizontal">左右拼接</option>
+                            <option value="vertical">上下拼接</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>当前图片位置:</label>
+                        <select id="mergePosition">
+                            <option value="first">在前（左/上）</option>
+                            <option value="second">在后（右/下）</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="merge-dialog-buttons">
+                    <button onclick="selectSecondImage()">选择第二张图片</button>
+                    <button onclick="closeMergeDialog()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
