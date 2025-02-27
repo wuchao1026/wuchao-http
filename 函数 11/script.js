@@ -29,6 +29,27 @@ const chartTitleInput = document.getElementById('chart-title');
 let currentInputMode = 'manual'; // 默认输入模式
 let currentChartType = 'line'; // 默认图表类型
 
+// 保存X轴设置到localStorage
+function saveXAxisSettings() {
+    const settings = {
+        start: xStartInput.value,
+        end: xEndInput.value,
+        step: xStepInput.value
+    };
+    localStorage.setItem('xAxisSettings', JSON.stringify(settings));
+}
+
+// 从localStorage恢复X轴设置
+function loadXAxisSettings() {
+    const settings = localStorage.getItem('xAxisSettings');
+    if (settings) {
+        const { start, end, step } = JSON.parse(settings);
+        xStartInput.value = start;
+        xEndInput.value = end;
+        xStepInput.value = step;
+    }
+}
+
 // 输入模式按钮处理
 inputModeButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -48,7 +69,7 @@ function toggleXInputMode(isAuto) {
     xInputs.forEach(input => {
         input.disabled = isAuto;
     });
-    xAxisSettings.style.display = isAuto ? 'block' : 'none';
+    xAxisSettings.style.display = 'block'; // 始终显示X轴设置区域
 }
 
 // 生成X值按钮事件处理
@@ -129,6 +150,7 @@ function hideFirstYColumnDeleteButton() {
     }
 }
 
+
 // 生成X值
 function generateXValues() {
     const xStart = parseFloat(xStartInput.value);
@@ -139,6 +161,9 @@ function generateXValues() {
         showError('请输入有效的X轴范围和间隔值');
         return;
     }
+
+    // 保存X轴设置
+    saveXAxisSettings();
 
     // 清空现有的行
     tableBody.innerHTML = '';
@@ -304,10 +329,13 @@ saveChartButton.addEventListener('click', () => {
 
 // 修改初始Y1列的按钮
 document.addEventListener('DOMContentLoaded', () => {
-    // 设置X轴默认值
-    xStartInput.value = '0';
-    xEndInput.value = '10';
-    xStepInput.value = '1';
+    // 加载保存的X轴设置
+    loadXAxisSettings();
+
+    // 如果没有保存的设置，使用默认值
+    if (!xStartInput.value) xStartInput.value = '0';
+    if (!xEndInput.value) xEndInput.value = '10';
+    if (!xStepInput.value) xStepInput.value = '1';
 
     // 初始化X轴设置区域显示状态
     toggleXInputMode(false);

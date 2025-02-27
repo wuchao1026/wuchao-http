@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>函数图像绘制工具</title>
+    <title></title>
     <link rel="stylesheet" href="styles.css">
     <!-- 引入Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -12,33 +12,34 @@
     <div class="container">
         <!-- 标题区域 -->
         <header>
-            <h1>函数图像绘制工具</h1>
+            <h1></h1>
         </header>
 
         <!-- 主要内容区域 -->
         <main>
+            <!-- 离散函数板块 -->
+            <section class="discrete-function-section">
+                <h2 class="discrete-function-title">离散函数</h2>
+            </section>
+
             <!-- 输入区域 -->
             <section class="input-section">
                 <div class="coordinate-input">
-                    <!-- X轴设置 -->
-                    <div class="x-axis-settings">
-                        <h3>X轴范围设置</h3>
-                        <div class="input-group">
-                            <input type="number" id="x-start" placeholder="起始值">
-                            <input type="number" id="x-end" placeholder="终止值">
-                            <input type="number" id="x-step" placeholder="间隔">
-                            <button id="generate-x" class="main-action-button">生成X值</button>
-                        </div>
-                    </div>
-                    
                     <!-- 坐标输入表格 -->
                     <div class="coordinates-table">
-                        <h3>坐标数据输入</h3>
-                        <div class="input-mode-buttons">
-                            <button class="input-mode-btn active" data-mode="manual">手动输入X值</button>
-                            <button class="input-mode-btn" data-mode="auto">自动生成X值</button>
+
+                        <!-- X轴设置 -->
+                        <div class="x-axis-settings">
+                            <h3 class="section-title">X轴设置</h3>
+                            <div class="input-group">
+                                <input type="number" id="x-start" placeholder="起始值">
+                                <input type="number" id="x-end" placeholder="终止值">
+                                <input type="number" id="x-step" placeholder="间隔">
+                                <button id="generate-x" class="main-action-button">生成X值</button>
+                            </div>
                         </div>
                         <table id="data-table">
+                            <h3 class="section-title">数据表格</h3>
                             <thead>
                                 <tr>
                                     <th>X</th>
@@ -62,7 +63,7 @@
                 <div class="chart-controls">
                     <!-- 图表类型选择 -->
                     <div class="chart-options">
-                        <h3>图表类型</h3>
+                        <h3 class="section-title">图表类型</h3>
                         <div class="chart-type-buttons">
                             <button class="chart-type-btn active" data-type="line">折线图</button>
                             <button class="chart-type-btn" data-type="scatter">散点图</button>
@@ -98,4 +99,4 @@
     </div>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
